@@ -7,10 +7,12 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 To start a local development server, run:
 
 ```bash
-ng serve
+npm start
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+The local API proxy reads `RESTCOUNTRIES_API_KEY` from `.env`. Create that file from `.env.example` and add your Rest Countries API key. `.env` is ignored by Git and must not be committed.
 
 ## Code scaffolding
 
@@ -53,6 +55,12 @@ ng e2e
 ```
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Deploying to Netlify
+
+The `netlify.toml` file configures the Angular production build and the Netlify Function that proxies Rest Countries requests. In the Netlify site settings, add `RESTCOUNTRIES_API_KEY` as an environment variable for the site’s functions. Do not put the key in frontend code or commit it to Git.
+
+Netlify publishes `dist/country-app/browser` and serves Angular routes through the SPA fallback. The API key is only used by the server-side function.
 
 ## Additional Resources
 

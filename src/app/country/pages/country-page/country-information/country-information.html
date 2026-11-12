@@ -1,0 +1,50 @@
+<section class="mx-6 mt-4 space-y-0.5 text-slate-300 sm:mx-10">
+  <h1 class="text-2xl font-normal">{{ country().names }}</h1>
+  <p class="text-base font-extralight text-slate-400">
+    Población {{ country().population | number }}
+  </p>
+</section>
+
+<section class="stats mx-5 mt-2 bg-transparent shadow">
+  <div class="stat place-items-center">
+    <div class="stat-title">Población</div>
+    <div class="stat-value">{{ country().population | number }}</div>
+    <div class="stat-desc">Desde {{ currentYear() }}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Nombre</div>
+    <div class="stat-value text-secondary">{{ country().names }}</div>
+    <div class="stat-desc text-secondary">{{ country().region }}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Sub Región</div>
+    <div class="stat-value">{{ country().subregion }}</div>
+    <div class="stat-desc">{{ country().region }}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Bandera</div>
+    <img
+      class="mt-2 h-8 w-auto"
+      [alt]="'Bandera de ' + country().names"
+      [src]="country().url_svg"
+    />
+    <div class="stat-desc">{{ country().alpha_2 }}</div>
+  </div>
+</section>
+
+<section class="diff aspect-video">
+  <div class="diff-item-1">
+    <img [alt]="country().names" [src]="country().url_svg" />
+  </div>
+  <div class="diff-item-2">
+    <img
+      class="blur brightness-75"
+      [alt]="country().names"
+      [src]="country().url_svg"
+    />
+  </div>
+  <div class="diff-resizer"></div>
+</section>

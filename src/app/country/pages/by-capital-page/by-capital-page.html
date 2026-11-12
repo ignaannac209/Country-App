@@ -1,0 +1,13 @@
+<country-search-input
+  placeholder="Buscar por capital"
+  [searchValue]="query()"
+  (value)="search($event)"
+  [debounceTime]="300"
+/>
+
+<country-list
+[countries]="countryResources.value() ?? []"
+[errorMessage]="searchError()"
+[isLoading]="countryResources.isLoading()"
+[isEmpty]="countryResources.value()?.length === 0"
+/>

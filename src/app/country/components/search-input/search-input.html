@@ -1,0 +1,26 @@
+
+
+
+<section class=" flex flex-row gap-2 mt-2">
+
+  <input
+    type="text"
+    class="input input-bordered mr-2 w-56"
+    [placeholder]="placeholder()"
+    [value]="inputValue()"
+    autofocus
+    #txtSearch
+    (input)="inputValue.set(txtSearch.value)"
+    (keyup.enter)="submit()"
+  />
+
+  <button
+    class="btn btn-primary"
+    (click)="submit()"
+  >
+    Buscar
+  </button>
+
+</section>
+
+<th></th>

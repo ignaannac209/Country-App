@@ -1,0 +1,63 @@
+<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th></th>
+        <th>ISO</th>
+        <th>Bandera</th>
+        <th>Nombre</th>
+        <th>Capital</th>
+        <th>Población</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (country of countries(); track country.alpha_2 + '-' + index; let index = $index) {
+        <tr>
+          <td>{{ index + 1 }}</td>
+          <td>{{ country.alpha_2 }}</td>
+          <td>
+            <img [src]="country.url_svg" [alt]="country.names" class="w-10" />
+          </td>
+          <td>{{ country.names }}</td>
+          <td>{{ country.capitals }}</td>
+          <td>
+            <span class="badge badge-secondary">
+              {{ country.population | number }}
+            </span>
+          </td>
+          <td>
+            <a
+              [routerLink]="['/country/by', country.alpha_2]"
+              class="link-primary cursor-pointer"
+              >Más información</a
+            >
+          </td>
+        </tr>
+            } @if (errorText()) {
+      <tr>
+        <td colspan="8" class="text-center">
+          {{ errorText() }}
+        </td>
+      </tr>
+      }
+
+
+      @if(countries().length === 0 && !isLoading() && !errorText()) {
+      <tr>
+        <td colspan="8" class="text-center">No se encontraron resultados</td>
+      </tr>
+      }
+
+
+      @if (isLoading()) {
+      <tr>
+        <td colspan="8" class="text-center">Buscando países</td>
+      </tr>
+
+      }
+
+    </tbody>
+  </table>
+</div>
